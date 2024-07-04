@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"hexagonal/handler"
+	"hexagonal/logs"
 	"hexagonal/repository"
 	"hexagonal/service"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -34,7 +34,8 @@ func main() {
 	router.HandleFunc("/customers/{customerID:[0-9]+}", customerHandler.GetCustomer).Methods(http.MethodGet)
 
 	port := fmt.Sprintf(":%v", viper.GetInt("app.port"))
-	log.Printf("Banking service started at port %v", port)
+	// log.Printf("Banking service started at port %v", port)
+	logs.Info("Banking service started at port " + viper.GetString("app.port"))
 	http.ListenAndServe(port, router)
 }
 
