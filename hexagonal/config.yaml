@@ -1,0 +1,10 @@
+app:
+  port: 8000
+
+db:
+  driver: "mysql"
+  host: ""
+  port: 3306
+  username: root
+  password: secret
+  database: bank
