@@ -7,4 +7,4 @@ db:
   port: 3306
   username: root
   password: secret
-  database: bank
+  database: banking
