@@ -6,6 +6,9 @@ import (
 	"time"
 
 	"math/rand"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/robfig/cron/v3"
 )
 
 func main() {
@@ -15,7 +18,77 @@ func main() {
 	// funcWaitGroup()
 	// funcMutex()
 	// funcOnce()
-	funcNewCond()
+	// funcNewCond()
+	// funcPubSub()
+	// funcFiberPubsub()
+	funcCronJob()
+}
+
+func funcCronJob() {
+	c := cron.New(cron.WithSeconds())
+	c.AddFunc("*/10 * * * * *", func() {
+		fmt.Println("Hellow wolrd every 10 seconds")
+	})
+
+	c.Start()
+
+	select {}
+}
+
+var pubsub = &PubSub{
+	Subscribers: make(map[uint]*Subscriber),
+}
+
+func funcFiberPubsub() {
+	app := fiber.New()
+
+	// Start a subscription routine
+	go func() {
+		subscriber := pubsub.Subscribe()
+		defer pubsub.Unsubscribe(subscriber.ID)
+
+		for msg := range subscriber.Channel {
+			// Handle the message, e.g., log, process, etc.
+			fmt.Printf("Received message: %s\n", msg.Content)
+		}
+	}()
+
+	// Publish endpoint
+	app.Post("/publish", func(c *fiber.Ctx) error {
+		var msg Message
+		if err := c.BodyParser(&msg); err != nil {
+			return err
+		}
+
+		go pubsub.Publish(msg)
+		return c.SendString("Message published")
+	})
+
+	app.Listen(":8888")
+}
+
+func funcPubSub() {
+	// สร้าง channel เพื่อส่งข้อความ
+	ch := make(chan string)
+
+	// สร้าง goroutine เพื่อส่งข้อความไปยัง channel
+	go func() {
+		for i := 0; i < 10; i++ {
+			ch <- fmt.Sprintf("Hello, world! %d", i)
+			time.Sleep(1 * time.Second)
+		}
+	}()
+
+	// สร้าง goroutine เพื่อรับข้อความจาก channel
+	go func() {
+		for {
+			msg := <-ch
+			fmt.Println(msg)
+		}
+	}()
+
+	// รอให้ goroutines ทำงานเสร็จสิ้น
+	time.Sleep(5 * time.Second)
 }
 
 // ## NewCond go-routine ล็อกทรัพยากรเมื่อกำลังรอเงื่อนไข และปลดล็อกเมื่อเข้าเงื่อนไข
