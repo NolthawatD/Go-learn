@@ -27,7 +27,7 @@ func main() {
 func funcCronJob() {
 	c := cron.New(cron.WithSeconds())
 	c.AddFunc("*/10 * * * * *", func() {
-		fmt.Println("Hellow wolrd every 10 seconds")
+		fmt.Println("Hello wolrd every 10 seconds")
 	})
 
 	c.Start()
