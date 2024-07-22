@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "consumer"
+		},
+		{
+			"path": "server"
+		},
+		{
+			"path": "producer"
+		}
+	],
+	"settings": {}
+}
