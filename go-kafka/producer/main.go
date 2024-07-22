@@ -25,5 +25,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("partition=%v, offset=%v", p, o)
+	fmt.Printf("partition=%v, offset=%v", p, o)
 }

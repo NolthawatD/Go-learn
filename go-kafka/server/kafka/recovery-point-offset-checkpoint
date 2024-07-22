@@ -1,5 +1,5 @@
 0
-51
+56
 __consumer_offsets 22 0
 nolhello 0 0
 __consumer_offsets 30 0
@@ -8,6 +8,7 @@ __consumer_offsets 21 0
 __consumer_offsets 4 0
 __consumer_offsets 27 0
 __consumer_offsets 7 0
+DepositFundEvent 0 0
 __consumer_offsets 9 0
 __consumer_offsets 46 0
 __consumer_offsets 25 0
@@ -37,6 +38,8 @@ __consumer_offsets 2 0
 __consumer_offsets 43 0
 __consumer_offsets 6 0
 __consumer_offsets 14 0
+DepositAccountEvent 0 0
+OpenAccountEvent 0 0
 __consumer_offsets 20 0
 __consumer_offsets 0 0
 __consumer_offsets 44 0
@@ -46,8 +49,10 @@ __consumer_offsets 45 0
 __consumer_offsets 1 0
 __consumer_offsets 5 0
 __consumer_offsets 26 0
+CloseAccountEvent 0 0
 __consumer_offsets 29 0
 __consumer_offsets 34 0
 __consumer_offsets 10 0
 __consumer_offsets 32 0
 __consumer_offsets 40 0
+WithdrawFundEvent 0 0

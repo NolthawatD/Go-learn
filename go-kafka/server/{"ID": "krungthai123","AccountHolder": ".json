@@ -1,0 +1,8 @@
+[
+	{"Action": "Open Account"},
+	{"ID": "krungthai4","AccountHolder": "nol","AccountType": 1,"OpeningBalance": 1000},
+	{"Action": "Deposit/Draw Fund"},
+	{"ID": "krungthai4","Amount": 1000},
+	{"Action": "Close Account"},
+	{"ID": "krungthai4"}
+]
