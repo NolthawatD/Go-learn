@@ -8,6 +8,6 @@ check partition and insert to partition comsumer
 watch-partition:
 	kafka-topics --bootstrap-server=localhost:9092 --topic=nolhello --describe
 
-refer to other module 
+refer to other module by write reference
 replace events => ../events //refer to module events
 go get events
